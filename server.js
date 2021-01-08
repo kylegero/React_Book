@@ -21,6 +21,13 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/googlebooks";
+
+mongoose.connect(MONGODB_URI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
+
 
 
 app.listen(PORT, () => {
