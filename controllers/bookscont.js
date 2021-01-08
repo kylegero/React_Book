@@ -13,5 +13,11 @@ module.exports = {
             .searchOne({id: req.params.id})
             .then(dbModl => res.json(dbModl))
             .catch(err => res.status(422).json(err))
-    }
+    },
+    save: function(req, res) {
+        db.googlebooks
+            .create(req.body)
+            .then(dbModl => res.json(dbModl))
+            .catch(err => res.status(422).json(err));
+    },
 }
