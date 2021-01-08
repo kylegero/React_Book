@@ -20,4 +20,11 @@ module.exports = {
             .then(dbModl => res.json(dbModl))
             .catch(err => res.status(422).json(err));
     },
-}
+    discard: function(req, res) {
+        db.googlebooks
+        .findById({ _id: req.params.id })
+        .then(dbModl => dbModl.remove())
+        .then(dbModl => res.json(dbModl))
+        .catch(err => res.status(422).json(err))
+    }
+};
